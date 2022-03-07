@@ -3,7 +3,8 @@ public:
     int longestConsecutive(vector<int>& nums) {
         unordered_set<int> s;
         int n=nums.size();
-        int largestlength=0;
+        int largestlength=1;
+            if(n ==0)return 0;
         
         //We don't sort as it will take o(NlogN) time 
         //Instead we do O(1) lookup via unordered set
