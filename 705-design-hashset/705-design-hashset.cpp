@@ -1,21 +1,23 @@
 class MyHashSet {
-        private:
-        vector<int> table;
-        
 public:
-    MyHashSet() : table(1e6+1, false){}
+        vector<int> m;
+        int siz;
+    MyHashSet(){
+            siz=1e6+1;
+            m.resize(siz);
+    }
         
     
     void add(int key) {
-        table[key] = true;
+            m[key]=1;
     }
     
     void remove(int key) {
-        table[key]=false;
+       m[key]=0;
     }
     
     bool contains(int key) {
-        return table[key];
+        return m[key];
     }
 };
 
