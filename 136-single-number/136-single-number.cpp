@@ -1,19 +1,11 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        
-            unordered_map<int,int> mpp;
+            int x=0;
+            
             for(auto i: nums){
-                    mpp[i]++;
+                    x ^=i;
             }
-            long save = 0;
-            for(auto i: mpp){
-                   if(i.second!=2){
-                       
-                           save = i.first;
-                           break;
-                   } 
-            }
-            return save;
+            return x;
     }
 };
