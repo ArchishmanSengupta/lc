@@ -1,23 +1,24 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-            int redCount = 0;
-            int whiteCount = 0;
-            int blueCount = 0;
-            int red = 0, white = 1, blue =2;
-            int n = nums.size();
+           
+            // lets make a count for each colors and mark the colors as 
+            // red =0, white=1, blue=2
             
-            for(int i=0;i<n;i++){
-                    int color = nums[i];
-                    
-                    if(nums[i]==0) redCount++;
-                    if(nums[i]==1) whiteCount++;
-                    if(nums[i]==2) blueCount++;
+            int redCount = 0, whiteCount = 0, blueCount = 0;
+            
+            int red = 0, white = 1, blue = 2;
+            
+            
+            for(auto i: nums){
+                    if(i==0) redCount++;
+                    else if(i==1) whiteCount++;
+                    else blueCount++;
             }
             
-            for(int i=0; i<n;i++){
+            for(int i = 0;i<nums.size();i++){
                     if(redCount!=0){
-                           nums[i] = 0;
+                            nums[i] = 0;
                             redCount--;
                     }
                     else if(whiteCount!=0){
@@ -25,7 +26,7 @@ public:
                             whiteCount--;
                     }
                     else if(blueCount!=0){
-                            nums[i] = 2;
+                            nums[i]=2;
                             blueCount--;
                     }
             }
