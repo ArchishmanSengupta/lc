@@ -11,17 +11,29 @@
  */
 class Solution {
 public:
-        void bfs(TreeNode* root, int level, vector<vector<int>> &res){
-                if(!root) return;
-                if(res.size() == level) res.push_back({});
-                res[level].push_back(root->val);
-                if(root->left) bfs(root->left, level+1, res);
-                if(root->right) bfs(root->right, level+1, res);
-        }
     vector<vector<int>>levelOrder(TreeNode* root) {
-        vector<vector<int>> res;
             
-            bfs(root, 0, res);
+           // this time with queue data struture
+            
+            vector<vector<int>> res;
+            
+            if(root == NULL) return res;
+            
+            queue<TreeNode*> q;
+            q.push(root);
+            
+            while(!q.empty()){
+                    vector<int> level;
+                    int size = q.size();
+                    for(int i=0;i<size;i++){
+                    TreeNode* node = q.front();
+                    q.pop();
+                    if(node->left !=NULL) q.push(node->left);
+                    if(node->right !=NULL) q.push(node->right);
+                            level.push_back(node->val);
+                    }
+                    res.push_back(level);
+            }
             return res;
     }
 };
